@@ -31,36 +31,36 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-  
     emailjs
-      .send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID, // Use environment variable
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID, // Use environment variable
-        {
-          from_name: form.name,
-          to_name: "Soumya Ranjan Barik",
-          from_email: form.email,
-          to_email: 'soumyabarik7365@gmail.com',
-          message: form.message,
-        },
-        process.env.REACT_APP_EMAILJS_PUBLIC_KEY // Use environment variable
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
+    .send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID, // Service ID
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // Template ID
+      {
+        from_name: form.name,
+        to_name: "Soumya Ranjan Barik",
+        from_email: form.email,
+        to_email: 'soumyabarik7365@gmail.com',
+        message: form.message,
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Public Key
+    )
+    .then(
+      () => {
+        setLoading(false);
+        alert("Thank you. I will get back to you as soon as possible.");
+  
+        setForm({
+          name: "",
+          email: "",
+          message: "",
+        });
+      },
+      (error) => {
+        setLoading(false);
+        console.error(error);
+      }
+    );
+  
   };
   
   
