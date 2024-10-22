@@ -32,11 +32,10 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
   
-    // Directly passing the values without assignment syntax
     emailjs
       .send(
-        'service_eyu969l', // Service ID
-        'template_av7nm42', // Template ID
+        process.env.REACT_APP_EMAILJS_SERVICE_ID, // Use environment variable
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID, // Use environment variable
         {
           from_name: form.name,
           to_name: "Soumya Ranjan Barik",
@@ -44,13 +43,12 @@ const Contact = () => {
           to_email: 'soumyabarik7365@gmail.com',
           message: form.message,
         },
-        'xBkyh9dkt3hZNZV8V' // Public Key
+        process.env.REACT_APP_EMAILJS_PUBLIC_KEY // Use environment variable
       )
       .then(
         () => {
           setLoading(false);
           alert("Thank you. I will get back to you as soon as possible.");
-    
           setForm({
             name: "",
             email: "",
@@ -60,11 +58,11 @@ const Contact = () => {
         (error) => {
           setLoading(false);
           console.error(error);
-    
           alert("Ahh, something went wrong. Please try again.");
         }
       );
   };
+  
   
   
 
