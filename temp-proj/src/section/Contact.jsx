@@ -5,7 +5,7 @@ import emailjs from '@emailjs/browser';
 import { styles } from '../styles.js'
 import EarthCanvas from '../Components/Earth';
 import { SectionWrapper } from '../hoc';
-import { slideIn } from '../utils/motion';
+import { slideIn } from '../utils/Motion.js';
 
 const Contact = () => {
   const formRef = useRef();
