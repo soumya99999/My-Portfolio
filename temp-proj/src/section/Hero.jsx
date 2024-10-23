@@ -11,7 +11,6 @@ import ReactLogo from '../Components/ReactLogo';
 import Java from '../Components/Java';
 import Rings from '../Components/Rings';
 import { useMediaQuery } from "react-responsive";
-import HeroCamera from '../Components/HeroCamera';
 import Button from '../Components/Button';
 import { calculateSizes } from '../constant';
 import Target from '../Components/Target';
