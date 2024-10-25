@@ -20,7 +20,7 @@ const Hero = () => {
 
   useEffect(() => {
     const options = {
-      strings: ['Full Stack Web Developer', 'ML Engineer', 'Coder in Java'],
+      strings: ['a Full Stack Web Developer', 'an ML Engineer', 'a Coder in Java'],
       typeSpeed: 50,
       backSpeed: 25,
       loop: true,
@@ -49,7 +49,7 @@ const Hero = () => {
 
         <div className="flex-grow flex justify-center items-start pt-10">
           <p className="text-xl md:text-3xl">
-            I am a{' '}
+            I am {' '}
             <span ref={typedElement} className="font-bold text-blue-700"></span>
             <span className="waving-hand">👋</span>
           </p>
