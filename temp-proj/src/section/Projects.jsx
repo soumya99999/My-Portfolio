@@ -1,12 +1,14 @@
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Suspense, useState } from 'react';
+import { Suspense, useState, lazy } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Center, OrbitControls } from '@react-three/drei';
-
+import { useMediaQuery } from 'react-responsive';
 import { myProjects } from '../constant/index.js';
-import DemoComputer from '../Components/DemoComputer';
 import CanvasLoader from '../Components/Loading';
+
+
+const DemoComputer = lazy(()=> import("../Components/DemoComputer.jsx"))
 
 const projectCount = myProjects.length;
 
@@ -28,6 +30,8 @@ const Projects = () => {
     }, [selectedProjectIndex]);
 
     const currentProject = myProjects[selectedProjectIndex];
+
+    const isMobile = useMediaQuery({ maxWidth: 768 });
 
     return (
         <section className="c-space">
@@ -85,12 +89,11 @@ const Projects = () => {
                 <directionalLight position={[10, 10, 5]} />
                 <Center>
                     <Suspense fallback={<CanvasLoader />}>
-                        <group scale={2} position={[0, -3, 0]} rotation={[0, -0.1, 0]}>
+                        <group scale={`${isMobile? 1.4:1.7}`} position={[0, -2, 0]} rotation={[0, -0.1, 0]}>
                             <DemoComputer texture={currentProject.texture} />
                         </group>
                     </Suspense>
                 </Center>
-                <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
             </Canvas>
         </div>
     </div>

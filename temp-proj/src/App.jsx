@@ -1,14 +1,11 @@
 
 import Navbar from "./section/Navbar";
-import Hero from  "./section/Hero";
+import Hero from "./section/Hero";
 import About from "./section/About";
 import SkillSection from "./section/SkillSection";
 import Projects from "./section/Projects"
 import Contact from "./section/Contact";
 import StarsCanvas from "./Components/Stars";
-
-import EllipticalCross from "./Components/EllipticalOrbit";
-
 
 const App = () => {
   return (
@@ -16,16 +13,12 @@ const App = () => {
       <Navbar />
       <Hero />
       <div className="relative z-0">
-      <About />
-      <StarsCanvas />
+        <About />
+        <StarsCanvas />
       </div>
       <SkillSection />
       <Projects />
-      <div className="relative z-0">
-        <Contact />
-        <StarsCanvas />
-      </div>
-      {/* <EllipticalCross /> */}
+      <Contact />
     </main>
   );
 };

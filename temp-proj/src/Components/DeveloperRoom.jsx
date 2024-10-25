@@ -7,35 +7,34 @@ const DeveloperRoom = (props) => {
     const animation = useFBX('/models/animations/mySelf.fbx');
     const groupRef = useRef();
     const mixer = useRef();
-
     useEffect(() => {
         if (groupRef.current && animation) {
+            // console.log('Loaded Animation:', animation);
             mixer.current = new AnimationMixer(groupRef.current);
-
-            // Assuming your fbx animation has one or more actions
+            
             if (animation.animations.length > 0) {
                 const action = mixer.current.clipAction(animation.animations[0]);
+                // console.log("Action loaded:", action);
                 action.play();
             } else {
-                console.warn("No animations found in the FBX file.");
+                console.warn("No valid animations found in the FBX file.");
             }
-
-            const clock = new Clock();  // Use Clock from THREE.js
-            
+    
+            const clock = new Clock();
             const animate = () => {
                 requestAnimationFrame(animate);
                 const delta = clock.getDelta();
                 mixer.current.update(delta);
             };
-            
+    
             animate();
-
+    
             return () => {
                 mixer.current.stopAllAction();
             };
         }
     }, [animation]);
-
+    
     return (
         <group ref={groupRef} {...props} dispose={null}>
             <group rotation={[-Math.PI / 2, 0, 0]}>

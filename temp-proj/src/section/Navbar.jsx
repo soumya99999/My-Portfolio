@@ -33,7 +33,7 @@ const Navbar = () => {
 
           <button className='text-neutral-400 hover:text-white focus:outline-none sm:hidden flex' onClick={toggle} aria-label='Toggle-menu'>
             <img
-              src={isOpen ? "assets/close.svg" : "assets/menu.svg"} // Use appropriate paths
+              src={isOpen ? "assets/close.svg" : "assets/menu.svg"} 
               alt="toggle"
               className='w-6 h-6'
             />

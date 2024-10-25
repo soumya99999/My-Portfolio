@@ -195,6 +195,77 @@ body {
   .social-icon {
     @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
   }
+
+  .glow-yellow {
+    @apply border-yellow-500;
+    position: relative;
+    border-width: 4px;
+    box-shadow: 0 0 5px yellow, 0 0 20px yellow;
+    animation: glowing-border-yellow 2s infinite alternate;
+  }
+
+  .glow-purple {
+    @apply border-purple-500;
+    position: relative;
+    border-width: 4px;
+    box-shadow: 0 0 5px purple, 0 0 20px purple;
+    animation: glowing-border-purple 2s infinite alternate;
+  }
+
+  .glow-blue {
+    @apply border-blue-500;
+    position: relative;
+    border-width: 4px;
+    box-shadow: 0 0 5px blue, 0 0 20px blue;
+    animation: glowing-border-blue 2s infinite alternate;
+  }
+
+  .glow-green{
+    @apply border-green-500;
+    position: relative;
+    border-width: 4px;
+    box-shadow: 0 0 5px green, 0 0 20px green;
+    animation: glowing-border-green 2s infinite alternate;
+  }
+
+
+  @keyframes glowing-border-yellow {
+    0% {
+      box-shadow: 0 0 5px yellow;
+    }
+    100% {
+      box-shadow: 0 0 20px yellow;
+    }
+  }
+
+  @keyframes glowing-border-purple {
+    0% {
+      box-shadow: 0 0 5px purple;
+    }
+    100% {
+      box-shadow: 0 0 20px purple;
+    }
+  }
+
+  @keyframes glowing-border-blue {
+    0% {
+      box-shadow: 0 0 5px blue;
+    }
+    100% {
+      box-shadow: 0 0 20px blue;
+    }
+}
+
+  @keyframes glowing-border-green {
+    0% {
+      box-shadow: 0 0 5px green;
+    }
+    100% {
+      box-shadow: 0 0 20px green;
+    }
+  }
+
+  
 }
 
 .waving-hand {
@@ -240,4 +311,50 @@ body {
   100% {
     transform: rotate(0deg);
   }
+}
+
+.code-snippet {
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 20px rgba(0, 153, 255, 0.8); /* Glowing effect */
+  transition: box-shadow 0.3s ease;
+}
+
+.code-snippet:hover {
+  box-shadow: 0 0 30px rgba(0, 153, 255, 1); /* Brighten on hover */
+}
+
+.highlight {
+  color: #00bfff; /* Highlight color for the code */
+  text-shadow: 0 0 5px rgba(0, 191, 255, 0.8); /* Glowing text effect */
+}
+
+.loader {
+  border: 8px solid rgba(255, 255, 255, 0.2); /* Light border */
+  border-left-color: #ffffff; /* Spinner color */
+  border-radius: 50%;
+  width: 60px; /* Adjust size */
+  height: 60px; /* Adjust size */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.glass-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1); /* Light white with transparency */
+  backdrop-filter: blur(10px); /* Blur effect */
+  z-index: 999; /* Make sure it covers everything */
 }
