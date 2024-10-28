@@ -28,12 +28,12 @@ const Navbar = () => {
         <div className='flex justify-between items-center py-5'>
           {/* Logo */}
           <a href="/" className='text-white font-bold text-xl'>
-            <img src="assets/Code-2.png" alt="logo" className='h-20 w-auto transform scale-x-[-1]' />
+            <img src="assets/Code-2.webp" alt="logo" className='h-20 w-auto transform scale-x-[-1]' />
           </a>
 
           <button className='text-neutral-400 hover:text-white focus:outline-none sm:hidden flex' onClick={toggle} aria-label='Toggle-menu'>
             <img
-              src={isOpen ? "assets/close.svg" : "assets/menu.svg"} 
+              src={isOpen ? "assets/close.webp" : "assets/menu.webp"} 
               alt="toggle"
               className='w-6 h-6'
             />

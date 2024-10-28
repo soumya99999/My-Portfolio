@@ -10,313 +10,24 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export function Laptop(props) {
-  const { nodes, materials } = useGLTF('models/laptop_and_mouse.glb')
+  const { nodes, materials } = useGLTF('models/Laptop.glb')
   return (
     <group {...props} dispose={null}>
-      <group
-        position={[10.118, 4.687, 30.64]}
-        rotation={[-Math.PI, -Math.PI / 9, -Math.PI / 2]}
-        scale={[0.185, 0.037, 0.037]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseWheel_MouseTrans_0.geometry}
-          material={materials.MouseTrans}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseWheel_GreenEmissive_0.geometry}
-          material={materials.GreenEmissive}
-        />
-      </group>
-      <group
-        position={[5.747, 4.218, 28.277]}
-        rotation={[-Math.PI / 2, 0, -1.222]}
-        scale={[4.165, 6.564, 2.188]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsTop_MouseGloss_0.geometry}
-          material={materials.MouseGloss}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsTop_MouseEmissiveGreen_0.geometry}
-          material={materials.MouseEmissiveGreen}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsTop_GlassDark_0.geometry}
-          material={materials.GlassDark}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsTop_MouseTopButton_0.geometry}
-          material={materials.MouseTopButton}
-        />
-      </group>
-      <group position={[6.895, 2.683, 30.734]} rotation={[-Math.PI / 2, 0, -1.222]} scale={100}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseBody_MouseGloss_0.geometry}
-          material={materials.MouseGloss}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseBody_MouseSideMatte_0.geometry}
-          material={materials.MouseSideMatte}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseBody_MouseMatte_0.geometry}
-          material={materials.MouseMatte}
-        />
-      </group>
-      <group position={[8.032, 2.578, 27.127]} rotation={[-2.961, -0.314, 1.804]} scale={0.438}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsGlass_MouseYellowTrans_0.geometry}
-          material={materials.MouseYellowTrans}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsGlass_MouseGreenTrans_0.geometry}
-          material={materials.MouseGreenTrans}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsGlass_MouseBlueTrans_0.geometry}
-          material={materials.MouseBlueTrans}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsGlass_MouseRedTrans_0.geometry}
-          material={materials.MouseRedTrans}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsGlass_MouseGreenBack_0.geometry}
-          material={materials.MouseGreenBack}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsGlass_MouseRed_0.geometry}
-          material={materials.MouseRed}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsGlass_MouseYellow_0.geometry}
-          material={materials.MouseYellow}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsGlass_MouseBlue_0.geometry}
-          material={materials.MouseBlue}
-        />
-      </group>
-      <group position={[10.368, 2.045, 32.796]} rotation={[-0.125, 0.589, -1.335]} scale={0.564}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsSide_ButtonE_0.geometry}
-          material={materials.ButtonE}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsSide_ButtonA_0.geometry}
-          material={materials.ButtonA}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsSide_ButtonC001_0.geometry}
-          material={materials['ButtonC.001']}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsSide_ButtonD_0.geometry}
-          material={materials.ButtonD}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.ButtonsSide_ButtonB_0.geometry}
-          material={materials.ButtonB}
-        />
-      </group>
-      <group
-        position={[11.895, 2.126, 28.92]}
-        rotation={[Math.PI, 1.222, 0]}
-        scale={[-0.384, 0.384, 0.384]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.CableHolder_MouseMatte_0.geometry}
-          material={materials.MouseMatte}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.CableHolder_MouseCable_0.geometry}
-          material={materials.MouseCable}
-        />
-      </group>
-      <group position={[-3.054, 5.015, -0.558]} rotation={[-1.541, -0.082, 1.921]} scale={100}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.USBslots_Material_0.geometry}
-          material={materials.Material}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.USBslots_LaptopRed_0.geometry}
-          material={materials.LaptopRed}
-        />
-      </group>
-      <group position={[-3.054, 5.015, -0.558]} rotation={[-1.541, -0.082, 1.921]} scale={100}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopKeyboard_LaptopKeys_0.geometry}
-          material={materials.LaptopKeys}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopKeyboard_LaptopHoles_0.geometry}
-          material={materials.LaptopHoles}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopKeyboard_BronzeLaptop_0.geometry}
-          material={materials.BronzeLaptop}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopKeyboard_MetalLaptop_0.geometry}
-          material={materials.MetalLaptop}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopKeyboard_LaptopRedEmissive_0.geometry}
-          material={materials.LaptopRedEmissive}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopKeyboard_LaptopRed_0.geometry}
-          material={materials.LaptopRed}
-        />
-      </group>
-      <group position={[9.799, 7.015, -5.236]} rotation={[2.891, 1.211, -2.907]} scale={100}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopLid_LaptopLid_0.geometry}
-          material={materials.LaptopLid}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopLid_LaptopScreen_0.geometry}
-          material={materials.LaptopScreen}
-        />
-      </group>
-      <group position={[-2.979, 5.015, -0.352]} rotation={[-1.541, -0.082, 1.921]} scale={100}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseUSB_MetalLaptop_0.geometry}
-          material={materials.MetalLaptop}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseUSB_MouseUSB_0.geometry}
-          material={materials.MouseUSB}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseUSB_MouseRed_0.geometry}
-          material={materials.MouseRed}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseUSB_MouseCable_0.geometry}
-          material={materials.MouseCable}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.MouseUSB_MouseMatte_0.geometry}
-          material={materials.MouseMatte}
-        />
-      </group>
-      <group
-        position={[-2.859, 2.642, -0.629]}
-        rotation={[-1.541, -0.082, 1.921]}
-        scale={[20.4, 14.35, 1.45]}>
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopStand_LaptopStand_0.geometry}
-          material={materials.LaptopStand}
-        />
-        <mesh
-          castShadow
-          receiveShadow
-          geometry={nodes.LaptopStand_LaptopRed_0.geometry}
-          material={materials.LaptopRed}
-        />
-      </group>
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cable002_MouseCable_0.geometry}
-        material={materials.MouseCable}
-        position={[12.957, 2.109, 28.511]}
-        rotation={[-Math.PI / 2, 0, 0]}
+        geometry={nodes.Buttons_LaptopKeys_0.geometry}
+        material={materials.LaptopKeys}
+        position={[12.411, 6.664, 13.904]}
+        rotation={[-1.541, -0.082, 1.968]}
         scale={100}
       />
       <mesh
         castShadow
         receiveShadow
         geometry={nodes.Cube_MatTrans_0.geometry}
-        material={materials.MatTrans}
+        material={materials.PaletteMaterial001}
         position={[5.951, 0.223, 31.084]}
-        rotation={[-Math.PI / 2, 0, -1.222]}
-        scale={[10.949, 14.207, 0.23]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Cube002_MatTransRed_0.geometry}
-        material={materials.MatTransRed}
-        position={[-4.209, 0.397, 34.782]}
         rotation={[-Math.PI / 2, 0, -1.222]}
         scale={[10.949, 14.207, 0.23]}
       />
@@ -332,34 +43,43 @@ export function Laptop(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Cube004_MatTransBlack_0.geometry}
-        material={materials.MatTransBlack}
-        position={[-4.209, 0.397, 34.782]}
-        rotation={[-Math.PI / 2, 0, 1.92]}
-        scale={[10.949, 14.207, 0.23]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Buttons_LaptopKeys_0.geometry}
-        material={materials.LaptopKeys}
-        position={[12.411, 6.664, 13.904]}
-        rotation={[-1.541, -0.082, 1.968]}
+        geometry={nodes.LaptopKeyboard_LaptopRed_0.geometry}
+        material={materials.PaletteMaterial002}
+        position={[-3.054, 5.015, -0.558]}
+        rotation={[-1.541, -0.082, 1.921]}
         scale={100}
       />
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.LaptopStandFeet_LaptopStand_0.geometry}
-        material={materials.LaptopStand}
-        position={[3.251, 0.112, -18.72]}
-        rotation={[-1.376, -0.489, 1.969]}
-        scale={[1.623, 0.422, 2.296]}
+        geometry={nodes.LaptopLid_LaptopLid_0.geometry}
+        material={materials.LaptopLid}
+        position={[9.799, 7.015, -5.236]}
+        rotation={[2.891, 1.211, -2.907]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.MouseUSB_MouseCable_0.geometry}
+        material={materials.MouseCable}
+        position={[-2.979, 5.015, -0.352]}
+        rotation={[-1.541, -0.082, 1.921]}
+        scale={100}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.MouseUSB_MouseUSB_0.geometry}
+        material={materials.MouseUSB}
+        position={[-2.979, 5.015, -0.352]}
+        rotation={[-1.541, -0.082, 1.921]}
+        scale={100}
       />
     </group>
   )
 }
 
-useGLTF.preload('models/laptop_and_mouse.glb')
+useGLTF.preload('models/Laptop.glb')
 
 export default Laptop;

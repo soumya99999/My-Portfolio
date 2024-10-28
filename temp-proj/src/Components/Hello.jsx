@@ -1,38 +1,42 @@
 import React, { useEffect, useRef } from 'react';
 import { useFBX, useGLTF } from '@react-three/drei';
 import { AnimationMixer } from 'three';
-import * as THREE from 'three';  
+import { useFrame } from '@react-three/fiber';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
 export function Hello({ onLoadComplete, ...props }) {
-  const { nodes, materials } = useGLTF('models/Hello_new.glb', true); // Enable async loading
+  // Use GLTF loader with Draco compression
+  const { nodes, materials } = useGLTF('models/Hello_new.glb', true, {
+    draco: { decode: new DRACOLoader() }
+  });
+
+  // Load the specific FBX animation
   const animation = useFBX('models/animations/Throwing Dice.fbx');
   const groupRef = useRef();
   const mixer = useRef();
 
   useEffect(() => {
     if (groupRef.current && animation) {
+      // Initialize AnimationMixer with the loaded group
       mixer.current = new AnimationMixer(groupRef.current);
       if (animation.animations.length > 0) {
         const action = mixer.current.clipAction(animation.animations[0]);
         action.play();
       }
 
-      const clock = new THREE.Clock();
-      const updateAnimation = () => {
-        requestAnimationFrame(updateAnimation);
-        const delta = clock.getDelta();
-        mixer.current.update(delta);
-      };
-
-      updateAnimation();
-
+      // Trigger onLoadComplete callback if provided
       if (onLoadComplete) {
-        onLoadComplete(); // Trigger onLoadComplete when assets are loaded
+        onLoadComplete();
       }
 
-      return () => mixer.current.stopAllAction();
+      return () => mixer.current.stopAllAction();  // Clean up animations on unmount
     }
   }, [animation, onLoadComplete]);
+
+  // Use useFrame to handle animation updates, avoiding multiple animation loops
+  useFrame((state, delta) => {
+    if (mixer.current) mixer.current.update(delta);
+  });
 
   return (
     <group ref={groupRef} {...props} dispose={null}>

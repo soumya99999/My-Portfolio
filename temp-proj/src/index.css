@@ -356,5 +356,5 @@ body {
   bottom: 0;
   background: rgba(255, 255, 255, 0.1); /* Light white with transparency */
   backdrop-filter: blur(10px); /* Blur effect */
-  z-index: 999; /* Make sure it covers everything */
+  z-index: 999; 
 }

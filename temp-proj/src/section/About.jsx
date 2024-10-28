@@ -1,6 +1,6 @@
-import React, { Suspense, useState, useEffect, lazy } from 'react';
+import React, { Suspense, useMemo, lazy } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Leva, useControls } from 'leva';
+import { Leva } from 'leva';
 import { useMediaQuery } from 'react-responsive';
 import FloatingGlobe from '../Components/FloatingGlobe';
 import { calculateSizes } from '../constant';
@@ -11,20 +11,21 @@ const Book = lazy(() => import('../Components/Book'));
 const AboutChair = lazy(() => import('../Components/AboutChair'));
 
 const About = () => {
+  // Media queries for responsive design
   const isSmall = useMediaQuery({ maxWidth: 440 });
   const isMobile = useMediaQuery({ maxWidth: 768 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
-  const sizes = calculateSizes(isSmall, isMobile, isTablet);
-
+  // Memoized size calculations
+  const sizes = useMemo(() => calculateSizes(isSmall, isMobile, isTablet), [isSmall, isMobile, isTablet]);
 
   return (
     <>
       <Leva hidden />
       <section className="c-space my-20 relative" id="about">
         <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-5 h-full">
-
-          {/* 3D Model Section - Left Side on laptop screens */}
+          
+          {/* 3D Model Section - Left Side on Laptop Screens */}
           <div className={`col-span-1 relative z-[3] h-full min-h-[500px] order-2 ${isMobile ? 'order-1' : 'order-2'} flex`}>
             <Canvas style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
               <ambientLight intensity={0.5} />
@@ -35,29 +36,31 @@ const About = () => {
                 <AboutChair position={sizes.AboutChairPosition} scale={sizes.AboutChairScale} rotation={sizes.AboutChairRotation} />
               </Suspense>
             </Canvas>
+
+            {/* External Links with Optimized Image Sizes */}
             <div className="absolute top-0 left-0 p-4">
               <a href="https://www.instagram.com/soumyaranjanbarik995?utm_source=qr&igsh=MWo2dzgzbzZoNzNiMw==" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/instagram.png" alt="Instagram" className="w-16 h-16" />
+                <img src="../assets/instagram.webp" alt="Instagram" className="w-12 h-12" />
               </a>
             </div>
             <div className="absolute top-0 right-0 p-4">
               <a href="https://www.linkedin.com/in/soumya160?" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/linkedin.png" alt="LinkedIn" className="w-16 h-16" />
+                <img src="../assets/linkedin.webp" alt="LinkedIn" className="w-12 h-12" />
               </a>
             </div>
             <div className="absolute bottom-0 left-0 p-4">
               <a href="https://github.com/soumya99999" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/Git.png" alt="GitHub" className="w-24 h-24" />
+                <img src="../assets/Git.webp" alt="GitHub" className="w-16 h-16" />
               </a>
             </div>
             <div className="absolute bottom-5 right-0 p-4">
               <a href="../assets/YourResume.pdf" download>
-                <img src="../assets/resume.png" alt="Resume" className="w-12 h-12" />
+                <img src="../assets/resume.webp" alt="Resume" className="w-10 h-10" />
               </a>
             </div>
           </div>
 
-          {/* Text Section - Right Side on laptop screens */}
+          {/* Text Section - Right Side on Laptop Screens */}
           <div className={`col-span-1 xl:row-span-1 relative h-full flex flex-col justify-center order-1 ${isMobile ? 'order-1' : 'order-2'}`}>
             <div className="grid-container z-[2] relative border-l-4 border-gray-400">
               <div className="bg-black text-gray-300 p-8 rounded-md shadow-lg font-mono border-l-4 border-gray-400">
@@ -74,10 +77,12 @@ const About = () => {
               </div>
             </div>
 
-            {/* Floating Globe */}
-            <div className={`${isMobile ? 'absolute top-0 right-0 w-full h-full z-[4] mr-36' : 'absolute top-[-50px] right-0 w-full h-full z-[4] mr-16'}`}>
-              <FloatingGlobe />
-            </div>
+            {/* Conditionally Render Floating Globe for Larger Screens */}
+            {!isSmall && (
+              <div className="absolute top-[-50px] right-0 w-full h-full z-[4] mr-16">
+                <FloatingGlobe />
+              </div>
+            )}
           </div>
         </div>
       </section>

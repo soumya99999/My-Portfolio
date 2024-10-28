@@ -5,7 +5,7 @@ import * as THREE from 'three';  // Import THREE
 // import { Color } from 'three'; 
 
 export function CodingDesk(props) {
-  const { nodes } = useGLTF('models/wooden_laptop_table.glb');
+  const { nodes } = useGLTF('models/Coding_Chair.glb');
   
   // Create a new material with a color
   const deskMaterial = new THREE.MeshStandardMaterial({
@@ -20,18 +20,12 @@ export function CodingDesk(props) {
         castShadow
         receiveShadow
         geometry={nodes.Object_5.geometry}
-        material={deskMaterial}  // Apply new material
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Object_6.geometry}
-        material={deskMaterial}  // Apply new material
+        material={deskMaterial}
       />
     </group>
   );
 }
 
-useGLTF.preload('models/wooden_laptop_table.glb');
+useGLTF.preload('models/Coding_Chair.glb');
 
 export default CodingDesk;

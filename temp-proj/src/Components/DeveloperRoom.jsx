@@ -1,40 +1,42 @@
 import React, { useEffect, useRef } from 'react';
 import { useFBX, useGLTF } from '@react-three/drei';
-import { AnimationMixer, Clock } from 'three';  // Import THREE.js modules
+import { AnimationMixer } from 'three';
+import { useFrame } from '@react-three/fiber';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
 const DeveloperRoom = (props) => {
-    const { nodes, materials } = useGLTF('models/myself.glb');
-    const animation = useFBX('/models/animations/mySelf.fbx');
-    const groupRef = useRef();
-    const mixer = useRef();
-    useEffect(() => {
-        if (groupRef.current && animation) {
-            // console.log('Loaded Animation:', animation);
-            mixer.current = new AnimationMixer(groupRef.current);
-            
-            if (animation.animations.length > 0) {
-                const action = mixer.current.clipAction(animation.animations[0]);
-                // console.log("Action loaded:", action);
-                action.play();
-            } else {
-                console.warn("No valid animations found in the FBX file.");
-            }
-    
-            const clock = new Clock();
-            const animate = () => {
-                requestAnimationFrame(animate);
-                const delta = clock.getDelta();
-                mixer.current.update(delta);
-            };
-    
-            animate();
-    
-            return () => {
-                mixer.current.stopAllAction();
-            };
-        }
-    }, [animation]);
-    
+  // Load GLTF model with Draco compression
+  const { nodes, materials } = useGLTF('models/mySelf.glb', true, {
+    draco: { decode: new DRACOLoader() }
+  });
+
+  // Load FBX animation
+  const animation = useFBX('/models/animations/mySelf.fbx');
+  const groupRef = useRef();
+  const mixer = useRef();
+
+  useEffect(() => {
+    if (groupRef.current && animation) {
+      mixer.current = new AnimationMixer(groupRef.current);
+
+      if (animation.animations.length > 0) {
+        const action = mixer.current.clipAction(animation.animations[0]);
+        action.play();
+      } else {
+        console.warn("No valid animations found in the FBX file.");
+      }
+
+      return () => {
+        mixer.current.stopAllAction(); // Clean up on unmount
+      };
+    }
+  }, [animation]);
+
+  // Use useFrame to handle animation updates efficiently
+  useFrame((state, delta) => {
+    if (mixer.current) mixer.current.update(delta);
+  });
+
     return (
         <group ref={groupRef} {...props} dispose={null}>
             <group rotation={[-Math.PI / 2, 0, 0]}>
@@ -64,7 +66,6 @@ const DeveloperRoom = (props) => {
                     morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary}
                     morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences}
                 />
-                {/* Add remaining skinned meshes */}
                 <skinnedMesh
                     name="Wolf3D_Teeth"
                     geometry={nodes.Wolf3D_Teeth.geometry}
@@ -108,7 +109,7 @@ const DeveloperRoom = (props) => {
     );
 };
 
-useGLTF.preload('models/myself.glb');
+useGLTF.preload('models/mySelf.glb');
 useFBX.preload('/models/animations/mySelf.fbx');
 
 export default DeveloperRoom;

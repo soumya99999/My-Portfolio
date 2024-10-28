@@ -10,11 +10,11 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const AboutChair=(props)=> {
-  const { nodes, materials } = useGLTF('/models/About_chair.glb')
+  const { nodes, materials } = useGLTF('/models/About_Chair.glb')
   return (
     <group {...props} dispose={null}>
       <group rotation={[Math.PI / 2, 0, -3.136]}>
-        <group rotation={[-Math.PI, 0, 0]} scale={0.01}>
+        <group rotation={[Math.PI, 0, 0]} scale={0.01}>
           <mesh
             castShadow
             receiveShadow
@@ -36,7 +36,7 @@ const AboutChair=(props)=> {
             receiveShadow
             geometry={nodes.Plane_Black_legs_0.geometry}
             material={materials.Black_legs}
-            rotation={[-Math.PI, -Math.PI / 2, 0]}
+            rotation={[-Math.PI, -1.571, 0]}
             scale={100}
           />
         </group>
@@ -45,6 +45,6 @@ const AboutChair=(props)=> {
   )
 }
 
-useGLTF.preload('/models/About_chair.glb')
+useGLTF.preload('/models/About_Chair.glb')
 
 export default AboutChair;
