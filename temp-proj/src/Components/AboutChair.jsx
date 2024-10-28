@@ -10,7 +10,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const AboutChair=(props)=> {
-  const { nodes, materials } = useGLTF('/models/About_Chair.glb')
+  const { nodes, materials } = useGLTF('/models/About_chair.glb')
   return (
     <group {...props} dispose={null}>
       <group rotation={[Math.PI / 2, 0, -3.136]}>
@@ -45,6 +45,6 @@ const AboutChair=(props)=> {
   )
 }
 
-useGLTF.preload('/models/About_Chair.glb')
+useGLTF.preload('/models/About_chair.glb')
 
 export default AboutChair;

@@ -6,7 +6,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 
 const DeveloperRoom = (props) => {
   // Load GLTF model with Draco compression
-  const { nodes, materials } = useGLTF('models/mySelf.glb', true, {
+  const { nodes, materials } = useGLTF('models/myself.glb', true, {
     draco: { decode: new DRACOLoader() }
   });
 
@@ -109,7 +109,7 @@ const DeveloperRoom = (props) => {
     );
 };
 
-useGLTF.preload('models/mySelf.glb');
+useGLTF.preload('models/myself.glb');
 useFBX.preload('/models/animations/mySelf.fbx');
 
 export default DeveloperRoom;

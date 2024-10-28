@@ -110,6 +110,6 @@ export function Hello({ onLoadComplete, ...props }) {
 
 // Preload the GLTF and FBX files to optimize loading
 useGLTF.preload('models/Hello_new.glb');
-useFBX.preload('models/animations/Standing Greeting.fbx');
+useFBX.preload('models/animations/Throwing Dice.fbx');
 
 export default Hello;
