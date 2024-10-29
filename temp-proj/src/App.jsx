@@ -15,10 +15,8 @@ const App = () => {
   return (
     <main className="max-w-7xl mx-auto bg-gradient-to-r from-gray-900 to-black overflow-hidden">
       <Navbar />
-        <Suspense fallback={<Loading />}>
-          <Hero />
-        </Suspense>
-        <div className="relative z-0">
+      <Hero />
+      <div className="relative z-0">
         <Suspense fallback={<Loading />}>
           <About />
           <StarsCanvas />
