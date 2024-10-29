@@ -13,7 +13,7 @@ const Contact = lazy(() => import("./section/Contact"));
 
 const App = () => {
   return (
-    <main className="max-w-7xl mx-auto bg-gradient-to-r from-gray-900 to-black overflow-hidden">
+    <main className="bg-gradient-to-r from-gray-900 to-black ">
       <Navbar />
       <Hero />
       <div className="relative z-0">

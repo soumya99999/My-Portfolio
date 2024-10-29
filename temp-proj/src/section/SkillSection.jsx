@@ -46,7 +46,7 @@ const SkillSection = () => {
         <section className="py-16 bg-gradient-to-r from-gray-900 to-black" id="skills">
             <div className="max-w-6xl mx-auto px-4">
                 <h2 className="text-4xl text-center font-bold mb-12 text-white">My Expertise</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {skillsData.map((skill) => (
                         <SkillCard 
                             key={skill.skill}
