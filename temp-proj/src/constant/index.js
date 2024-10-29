@@ -105,9 +105,9 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
     CodingDeskPosition: isMobile ? [-0.0, -1.6, 3.1]: [-0.0, -2.5, 2.3],
     // GamingChairScale : isSmall? 10 :isMobile ? 3.08: 5.00 ,
     // GamingChairPosition: isMobile ? [-0.1, -1, 1] : [-0.2, -2.3, 0],
-    // reactLogoPosition: isSmall ? [3, 3.5, 0] : isMobile ? [2.3, 0.3, 2.3] : isTablet ? [2.3, 0.3, 2.3] :[2.3, 0.3, 2.3], 
-    // reactLogoScale: isSmall? 0.02: isMobile? 0.06:0.13,
-    // reactLogoRotation: isSmall ? [-1.00, -2.50, -0.85] :isMobile? [-1.00, -2.50, -0.85]: [-1.00, -2.50, -0.85],
+    reactLogoPosition: isMobile ? [2.3, 0.3, 2.3] : isTablet ? [2.3, 0.3, 2.3] :[2.3, 0.3, 2.3], 
+    reactLogoScale: isMobile? 0.06:0.13,
+    reactLogoRotation: isMobile? [-1.00, -2.50, -0.85]: [-2.00, -2.50, -0.85],
     ringScale: isSmall ? 0.02 : isMobile ? 0.03 : 0.06,
     ringPosition: isSmall ? [-5, 6, 0] : isMobile ? [-10, 8, 0] : isTablet ? [-12, 8, 0] : [-24, 10, 0], // Adjusted for Rings
     developerRoomScale: isSmall ? 1.2 : isMobile ? 2.6 : 2.72, 
@@ -131,8 +131,14 @@ export const calculateSizes = (isSmall, isMobile, isTablet) => {
     // JavaPosition: isSmall ? [0.5, 1, 2.3] : isMobile ? [-2.6, 0.1, 2.3]: [-2.6, 0.1, 2.3],
     // JavaRotation: isSmall ? [0.11, 0, 0] : isMobile ? [0.11, 0, 0]:[-1.10, -1.75, -1.05],
     // JavaScale: isSmall ? 0.05 : isMobile ? 0.03: 0.15,
+    ThreePosition: isMobile ? [1,0,0]:[-4.5,-2,0],
+    ThreeScale:isMobile?10:1.5,
+    ThreeRotation:isMobile?[0,0,0]:[1,0,0],
     TargetPosition:  isSmall? [-0.34,-0.28,3.3] : isMobile ? [2.01,-1.2,2.83]: [-0.85,-0.6,2.83],
-    TargetScale : isSmall ? 0.1 :isMobile ? 3 : 0.25
+    TargetScale : isSmall ? 0.1 :isMobile ? 3 : 0.25,
+    CubePosition: isSmall ? [0.2,0.35,4]:isMobile?[2,0,3]:[4.5,-2.1,0],
+    CubeScale:isSmall ? 0.05 : isMobile?0.5:0.4,
+    CubeRotation:isSmall ? [0,0,0]:isMobile?[0,0,0]:[0,0,0]
   };
 };
 

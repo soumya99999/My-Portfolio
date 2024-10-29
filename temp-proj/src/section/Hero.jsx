@@ -6,13 +6,16 @@ import { useMediaQuery } from 'react-responsive';
 import Button from '../Components/Button';
 import { calculateSizes } from '../constant';
 import Rings from '../Components/Rings.jsx';
-import CodeSnippet from './CodeSnippet.jsx';
+import { Leva } from 'leva';
 
 // Lazy load 3D components
 const DeveloperRoom = lazy(() => import("../Components/DeveloperRoom.jsx"));
 const Laptop = lazy(() => import("../Components/Laptop.jsx"));
 const CodingDesk = lazy(() => import('../Components/Desk.jsx'));
 const Target = lazy(() => import("../Components/Target.jsx"));
+const Cube = lazy(() => import("../Components/Cube.jsx"));
+const ReactLogo = lazy(() => import("../Components/ReactLogo.jsx"));
+const Three = lazy(()=> import("../Components/Three.jsx"));
 
 const Hero = () => {
   const typedElement = useRef(null);
@@ -40,6 +43,8 @@ const Hero = () => {
   const sizes = useMemo(() => calculateSizes(isSmall, isMobile, isTablet), [isSmall, isMobile, isTablet]);
 
   return (
+    <>
+    <Leva />
     <section className="min-h-screen w-full flex flex-col justify-center items-center relative text-white">
       
       {/* Hero Content */}
@@ -56,7 +61,7 @@ const Hero = () => {
       </div>
 
       {/* Conditionally Render Code Snippets for Larger Screens */}
-      {!isMobile && (
+      {/* {!isMobile && (
         <>
           <div className="absolute left-2 top-1/4 w-1/4 hidden sm:flex flex-col items-center space-y-2">
             <CodeSnippet code={`// JavaScript Example\nconst add = (a, b) => a + b;`} styleClass="glow-yellow" />
@@ -68,7 +73,7 @@ const Hero = () => {
             <CodeSnippet code={`// ML Model Prediction\nimport tensorflow as tf\n\nmodel = tf.keras.models.load_model('my_model')\ninput_data = tf.constant([[1.2, 0.7, 0.3]])\nprediction = model(input_data)\nprint(prediction)`} styleClass="glow-green" />
           </div>
         </>
-      )}
+      )} */}
 
       {/* Canvas for 3D Scene */}
       <div className="w-full h-full absolute inset-0">
@@ -80,6 +85,13 @@ const Hero = () => {
 
             {/* 3D Models */}
             <group>
+              <Cube position={sizes.CubePosition} scale={sizes.CubeScale} rotation={sizes.CubeRotation} />
+              {!isMobile &&(
+                <>
+                <ReactLogo position={sizes.reactLogoPosition} scale={sizes.reactLogoScale} rotation={sizes.reactLogoRotation} />
+                <Three position={sizes.ThreePosition} scale={sizes.ThreeScale} rotation={sizes.ThreeRotation}/>
+                </>
+                )}
               <Rings position={sizes.RingsPosition} scale={sizes.RingsScale} rotation={sizes.RingsRotation} />
               <Target position={sizes.TargetPosition} scale={sizes.TargetScale} />
             </group>
@@ -98,6 +110,7 @@ const Hero = () => {
         </a>
       </div>
     </section>
+    </>
   );
 };
 

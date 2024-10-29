@@ -55,7 +55,7 @@ const Projects = () => {
                             <div className="flex items-center gap-3">
                                 {currentProject.tags.map((tag, index) => (
                                     <div key={index} className="tech-logo">
-                                        <img src={tag.path} alt={tag.name} />
+                                        <img src={tag.path} alt={tag.name} loading="lazy"/>
                                     </div>
                                 ))}
                             </div>
@@ -65,17 +65,17 @@ const Projects = () => {
                                 href={currentProject.href}
                                 target="_blank"
                                 rel="noreferrer">
-                                <img src="/assets/Git.webp" alt="arrow" className="w-10 h-10" />
+                                <img src="/assets/Git.webp" alt="arrow" loading="lazy" className="w-10 h-10" />
                             </a>
                         </div>
                     )}
 
                     <div className="flex justify-between items-center mt-7 ">
                         <button className="arrow-btn" onClick={() => handleNavigation('previous')}>
-                            <img src="/assets/left-arrow.webp" alt="left arrow" />
+                            <img src="/assets/left-arrow.webp" loading="lazy" alt="left arrow" />
                         </button>
                         <button className="arrow-btn" onClick={() => handleNavigation('next')}>
-                            <img src="/assets/right-arrow.webp" alt="right arrow" className="w-4 h-4" />
+                            <img src="/assets/right-arrow.webp" loading="lazy" alt="right arrow" className="w-4 h-4" />
                         </button>
                     </div>
                 </div>

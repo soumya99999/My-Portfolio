@@ -1,6 +1,5 @@
 import React, { Suspense, useMemo, lazy } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Leva } from 'leva';
 import { useMediaQuery } from 'react-responsive';
 import FloatingGlobe from '../Components/FloatingGlobe';
 import { calculateSizes } from '../constant';
@@ -21,15 +20,14 @@ const About = () => {
 
   return (
     <>
-      <Leva hidden />
       <section className="c-space my-20 relative" id="about">
         <div className="grid xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 grid-cols-1 gap-5 h-full">
           
           {/* 3D Model Section - Left Side on Laptop Screens */}
           <div className={`col-span-1 relative z-[3] h-full min-h-[500px] order-2 ${isMobile ? 'order-1' : 'order-2'} flex`}>
             <Canvas style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[0, 10, 5]} intensity={1} />
+              <ambientLight intensity={0.4} />
+              <directionalLight position={[0, 10, 5]} intensity={0.8} />
               <Suspense fallback={<CanvasLoader />}>
                 <Hello position={sizes.HelloPosition} scale={sizes.HelloScale} rotation={sizes.HelloRotation} />
                 <Book position={sizes.BookPosition} scale={sizes.BookScale} rotation={sizes.BookRotation} />
@@ -40,22 +38,22 @@ const About = () => {
             {/* External Links with Optimized Image Sizes */}
             <div className="absolute top-0 left-0 p-4">
               <a href="https://www.instagram.com/soumyaranjanbarik995?utm_source=qr&igsh=MWo2dzgzbzZoNzNiMw==" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/instagram.webp" alt="Instagram" className="w-12 h-12" />
+                <img src="../assets/instagram.webp" alt="Instagram"  loading="lazy" className="w-12 h-12" />
               </a>
             </div>
             <div className="absolute top-0 right-0 p-4">
               <a href="https://www.linkedin.com/in/soumya160?" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/linkedin.webp" alt="LinkedIn" className="w-12 h-12" />
+                <img src="../assets/linkedin.webp" alt="LinkedIn" loading="lazy" className="w-12 h-12" />
               </a>
             </div>
             <div className="absolute bottom-0 left-0 p-4">
               <a href="https://github.com/soumya99999" target="_blank" rel="noopener noreferrer">
-                <img src="../assets/Git.webp" alt="GitHub" className="w-16 h-16" />
+                <img src="../assets/Git.webp" alt="GitHub" loading="lazy" className="w-16 h-16" />
               </a>
             </div>
             <div className="absolute bottom-5 right-0 p-4">
               <a href="../assets/YourResume.pdf" download>
-                <img src="../assets/resume.webp" alt="Resume" className="w-10 h-10" />
+                <img src="../assets/resume.webp" alt="Resume" loading="lazy" className="w-10 h-10" />
               </a>
             </div>
           </div>
@@ -78,11 +76,9 @@ const About = () => {
             </div>
 
             {/* Conditionally Render Floating Globe for Larger Screens */}
-            {!isSmall && (
-              <div className="absolute top-[-50px] right-0 w-full h-full z-[4] mr-16">
-                <FloatingGlobe />
-              </div>
-            )}
+            <div className={`${isMobile ? 'absolute top-0 right-0 w-full h-full z-[4] mr-44' : 'absolute top-[-50px] right-0 w-full h-full z-[4] mr-16'}`}>
+              <FloatingGlobe />
+            </div>
           </div>
         </div>
       </section>
